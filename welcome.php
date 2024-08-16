@@ -4,6 +4,20 @@
         header("location:login.php");
         exit;
       }
+      if($_SERVER["REQUEST_METHOD"] == "POST"){
+        include 'connect.php';
+        $name= $_POST ["name"];
+        $class= $_POST ["class"];
+        $Rollno= $_POST ["Rollno"];
+        $sql  = "INSERT INTO `student-information` ( `name`, `class`, `Rollno`) VALUES ( '$name','$class', '$Rollno')";
+        $result = mysqli_query($conn,$sql);
+       if ($result){
+           echo "success";
+       }else{
+          echo "Invalid";
+       }
+
+      }
     ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -15,5 +29,35 @@
     </head>
     <body>
     welcome  to- <?php echo $_SESSION['username'] ?>
+    <div class="container">
+    <form method="post" >
+  <div class="form-group">
+    <label for="name">name</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="name">
+  </div>
+  <div class="form-group">
+    <label for="class">student-class</label>
+    <select class="form-control" id="class" name="class"   type="int">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+      <option>10</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="rollno">
+      Roll no
+    </label>
+    <input type="int" class="form-control" name="Rollno" id="Rollno" placeholder="132">
+  </div>
+  <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+    </div>
     </body>
     </html>
