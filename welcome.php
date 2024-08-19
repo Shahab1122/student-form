@@ -12,7 +12,8 @@
         $sql  = "INSERT INTO `student-information` ( `name`, `class`, `Rollno`) VALUES ( '$name','$class', '$Rollno')";
         $result = mysqli_query($conn,$sql);
        if ($result){
-           echo "success";
+          //  echo "";
+          header('location:display.php');
        }else{
           echo "Invalid";
        }
@@ -25,18 +26,24 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
         <title>welcome - <?php $_SESSION['username'] ?></title>
     </head>
     <body>
-    welcome  to- <?php echo $_SESSION['username'] ?>
+      <center>
+        <div class="container style:">
+        welcome  to- <?php echo $_SESSION['username'] ?>
+        </div>
+      </center>
+      
     <div class="container">
     <form method="post" >
   <div class="form-group">
-    <label for="name">name</label>
+    <label for="name">Name</label>
     <input type="text" class="form-control" id="name" name="name" placeholder="name">
   </div>
   <div class="form-group">
-    <label for="class">student-class</label>
+    <label for="class">Student-class</label>
     <select class="form-control" id="class" name="class"   type="int">
       <option>1</option>
       <option>2</option>
